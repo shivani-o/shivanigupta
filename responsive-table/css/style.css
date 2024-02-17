@@ -1,0 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*responsive Table*/
+#small-table {
+  width: 100%;
+  max-width: 750px;
+  margin: 50px 0;
+}
+#small-table td {
+  text-wrap: nowrap;
+}
