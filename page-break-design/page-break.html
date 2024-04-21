@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Break Content</title>
+</head>
+
+<body>
+    <div id="resumeContent">
+        <!-- Your resume content goes here -->
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <!-- Content continues -->
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <h1>Resume Header</h1>
+        <p>This is the first section of your resume.</p>
+        <!-- Add more sections and content as needed -->
+    </div>
+
+    <script>
+        // Function to add page breaks dynamically based on content height
+        function addPageBreaks() {
+            var contentDiv = document.getElementById('resumeContent');
+            var pageHeight = window.innerHeight; // Height of the page
+            var totalHeight = contentDiv.offsetHeight; // Total height of resume content
+            var currentPageHeight = 0;
+            var currentPageIndex = 0;
+
+            // Loop through each content element and check if it fits on the current page
+            for (var i = 0; i < contentDiv.children.length; i++) {
+                var child = contentDiv.children[i];
+                var childHeight = child.offsetHeight;
+
+                // If adding the current element exceeds the page height, insert a page break
+                if (currentPageHeight + childHeight > pageHeight && currentPageIndex !== i) {
+                    var pageBreak = document.createElement('div');
+                    pageBreak.className = 'page-break';
+                    contentDiv.insertBefore(pageBreak, child);
+                    currentPageHeight = 0; // Reset current page height
+                    currentPageIndex = i;
+                }
+
+                // Update current page height
+                currentPageHeight += childHeight;
+            }
+        }
+
+        // Call the function after the page has fully loaded
+        window.onload = function () {
+            addPageBreaks();
+        };
+    </script>
+</body>
+
+</html>
